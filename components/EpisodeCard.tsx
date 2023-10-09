@@ -2,7 +2,7 @@ import React from 'react';
 import { Episode, NavigationProps, Screens } from '../commonTypes';
 import { Text } from 'react-native';
 import styled from 'styled-components/native';
-import { View, Image, TouchableOpacity } from 'react-native-ui-lib';
+import { View, Image, TouchableOpacity } from 'react-native';
 
 const VideoLink = styled(View)`
   overflow: hidden;

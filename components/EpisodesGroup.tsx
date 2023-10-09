@@ -6,6 +6,7 @@ import { Episode, NavigationProps } from '../commonTypes';
 import { getEpisodesFromSeason } from '../util';
 import { Layout } from './Layout';
 import { ScrollView } from 'react-native';
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
 const dropdown = require('../assets/icons/chevron-down.png');
 
@@ -38,18 +39,22 @@ const EpisodesGroup = (props: { defaultSeason: number } & NavigationProps) => {
   if (season) {
     return (
       <Layout >
+        <GestureHandlerRootView>
         <Picker
           placeholder="Select a season"
           value={season}
           onChange={handleChange}
           selectionLimit={3}
           useSafeArea
-          trailingAccessory={<Icon source={dropdown}/>}
-        >
+          trailingAccessory={<Icon style={{height:16, width:16}} source={dropdown}/>}
+          fieldType={Picker.fieldTypes.filter}
+          useWheelPicker
+          >
           {Array.from(Array(numberOfSeasons).keys()).map((season) =>
             <Picker.Item key={season} value={season+1} label={`Season ${season+1}`}/>
-          )}
+            )}
         </Picker>
+            </GestureHandlerRootView>
         <ScrollView>
           <View >
             {episodes.map((episode, index) =>
