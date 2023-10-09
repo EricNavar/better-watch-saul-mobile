@@ -7,9 +7,9 @@ export const StyledView = styled(SafeAreaView)`
     background-color: white;
 `;
 
-export const Layout = (props: {children:JSX.Element | JSX.Element[]}) => {
+export const Layout = (props: {children:JSX.Element | JSX.Element[], style?: any}) => {
     return (
-        <StyledView>
+        <StyledView style={props.style}>
             <StatusBar
                 animated={true}
                 backgroundColor="#61dafb"

@@ -53,6 +53,9 @@ export default function App() {
                 <Stack.Navigator
                     screenOptions={{
                         headerShown: false,
+                        contentStyle:{
+                            backgroundColor:'#FFFFFF'
+                        }
                     }}
                 >
                     <Stack.Screen name={Screens.HomeScreen} component={HomeScreen} />

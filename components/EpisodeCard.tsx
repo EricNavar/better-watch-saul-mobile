@@ -1,17 +1,7 @@
 import React from 'react';
 import { Episode, NavigationProps, Screens } from '../commonTypes';
 import { Text } from 'react-native';
-import styled from 'styled-components/native';
-import { View, Image, TouchableOpacity } from 'react-native';
-
-const VideoLink = styled(View)`
-  overflow: hidden;
-  display: inline-block;
-  text-decoration: none;
-  color: black;
-  padding: 6px;
-  border-radius: 8px;
-`;
+import { Image, TouchableOpacity } from 'react-native';
 
 export const EpisodeCard = (props: {episode: Episode} & NavigationProps) => {
   const episode = props.episode;
@@ -21,15 +11,13 @@ export const EpisodeCard = (props: {episode: Episode} & NavigationProps) => {
     });
   };
 
-  
-
   return (
-    <TouchableOpacity onPress={onPress}>
+    <TouchableOpacity onPress={onPress} style={{marginTop:16}}>
       <Image
         source={{uri:`https://d34lypc6o619vf.cloudfront.net/${episode.season_number}.${episode.episode_number}.jpg`}}
         style={{ width:341, height: 192 }}
       />
-      <Text>
+      <Text style={{fontSize:16}}>
         Episode {episode.episode_number}: {episode.title}
       </Text>
     </TouchableOpacity>

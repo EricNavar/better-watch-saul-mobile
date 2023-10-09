@@ -1,10 +1,12 @@
 import React from 'react';
-import styled from 'styled-components/native';
 import { EpisodesGroup } from '../components/EpisodesGroup';
 import { Episode, NavigationProps } from '../commonTypes';
 import { getEpisode } from '../util';
-import { View, Text, Image } from 'react-native-ui-lib';
+import { Text, Image } from 'react-native-ui-lib';
 import { VideoPlayer } from '../components/VideoPlayer';
+import { Layout } from '../components/Layout';
+import { GestureHandlerRootView, TouchableOpacity } from 'react-native-gesture-handler';
+import { ScrollView } from 'react-native';
 
 // const VideoPlayer = styled('video')`
 //     width: 800px;
@@ -15,7 +17,6 @@ import { VideoPlayer } from '../components/VideoPlayer';
 type EpisodeScreenProps = any & NavigationProps;
 
 const EpisodeScreen = (props: EpisodeScreenProps) => {
-    console.log(props);
     const [episode, setEpisode] = React.useState<Episode | null>(null);
 
     React.useEffect(() => {
@@ -34,27 +35,35 @@ const EpisodeScreen = (props: EpisodeScreenProps) => {
     }
 
     return (
-        <View style={{ padding: 20 }}>
-            <a href='/'>
-                <Image
-                    source={{ uri: '../assets/better-watch-saul-logo.png' }}
-                />
-            </a>
-            <VideoPlayer
-                // width="800px"
-                // height="450px"
-                // controls
-                thumbnail={`https://d34lypc6o619vf.cloudfront.net/${episode.season_number}.${episode.episode_number}.jpg`}
-                source={episode.src}
-            />
-            <Text color="textPrimary" style={{ fontSize: 18, marginBottom: 8 }}>
-                Season {episode.season_number} Episode {episode.episode_number}
-            </Text>
-            <Text color="textPrimary">
-                {episode.description}
-            </Text>
-            <EpisodesGroup defaultSeason={episode.season_number} navigation={props.navigation}/>
-        </View>
+        <Layout>
+            <ScrollView>
+                <GestureHandlerRootView>
+                    <TouchableOpacity onPress={() => { props.navigation.goBack() }}>
+                        <Image
+                            style={{ width: 20, height: 20, margin: 16 }}
+                            source={require('../assets/icons/back.png')}
+                        />
+                    </TouchableOpacity>
+                    <VideoPlayer
+                        // width="800px"
+                        // height="450px"
+                        // controls
+                        thumbnail={`https://d34lypc6o619vf.cloudfront.net/${episode.season_number}.${episode.episode_number}.jpg`}
+                        source={episode.src}
+                    />
+                    <Text style={{ fontSize: 20, marginBottom: 8 }}>
+                        Season {episode.season_number} Episode {episode.episode_number}
+                    </Text>
+                    <Text style={{ marginBottom: 40 }}>
+                        {episode.description}
+                    </Text>
+                    <Text style={{ marginBottom: 16, fontSize: 20 }}>
+                        More episodes
+                    </Text>
+                    <EpisodesGroup defaultSeason={episode.season_number} navigation={props.navigation} />
+                </GestureHandlerRootView>
+            </ScrollView>
+        </Layout>
     );
 }
 

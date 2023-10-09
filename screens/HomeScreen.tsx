@@ -2,13 +2,20 @@ import React from 'react';
 import { EpisodesGroup } from '../components/EpisodesGroup';
 import { Image } from 'react-native-ui-lib';
 import { Layout } from '../components/Layout';
-import { NavigationProps } from '../commonTypes';
+import { NavigationProps, Screens } from '../commonTypes';
+import { Button, ScrollView } from 'react-native';
 
 const HomeScreen = (props: NavigationProps) => {
     return (
-        <Layout>
-            <Image style={{width: 150, height: 72.25}} source={require('../assets/better-watch-saul-logo.png')} />
-            <EpisodesGroup defaultSeason={1} navigation={props.navigation}/>
+        <Layout style={{marginHorizontal: 16}}>
+            <Image
+                style={{width: 150, height: 72.25, marginBottom: 12}}
+                source={require('../assets/better-watch-saul-logo.png')}
+            />
+            <ScrollView>
+                <Button title='About' onPress={()=>props.navigation.navigate(Screens.AboutScreen)}/>
+                <EpisodesGroup defaultSeason={1} navigation={props.navigation}/>
+            </ScrollView>
         </Layout>
     );
 }
