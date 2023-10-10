@@ -9,7 +9,7 @@ import {
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { Screens } from './commonTypes';
-import { Colors, Assets } from 'react-native-ui-lib';
+import { Colors } from 'react-native-ui-lib';
 
 const Stack = createNativeStackNavigator();
 
@@ -25,13 +25,6 @@ export default function App() {
             $backgroundSuccessLight: Colors.green20,
         },
         dark: {
-            // screenBG: Colors.grey10,
-            // textColor: Colors.white,
-            // moonOrSun: Colors.grey80,
-            // mountainForeground: Colors.violet10,
-            // mountainBackground: Colors.violet20,
-            // $backgroundSuccess: Colors.green40,
-            // $backgroundSuccessLight: Colors.green20,
             screenBG: Colors.white,
             textColor: Colors.black,
             moonOrSun: Colors.grey80,
@@ -41,12 +34,7 @@ export default function App() {
             $backgroundSuccessLight: Colors.green20,
         },
     });
-
-    Assets.loadAssetsGroup('icons', {
-        // drink: require('./assets/icons/ios-wine-bar-50.png'),
-        // back: require('./assets/icons/ios-back-50.png'),
-    });
-
+    
     return (
         <React.StrictMode>
             <NavigationContainer>

@@ -8,12 +8,6 @@ import { Layout } from '../components/Layout';
 import { GestureHandlerRootView, TouchableOpacity } from 'react-native-gesture-handler';
 import { ScrollView } from 'react-native';
 
-// const VideoPlayer = styled('video')`
-//     width: 800px;
-//     height: 450px;
-//     max-width: 100%;
-// `;
-
 type EpisodeScreenProps = any & NavigationProps;
 
 const EpisodeScreen = (props: EpisodeScreenProps) => {
@@ -23,7 +17,6 @@ const EpisodeScreen = (props: EpisodeScreenProps) => {
         const fetchEpisodes = async () => {
             let response;
             response = await getEpisode(props.route.params.trackId);
-            console.log(response.data);
             if (response && response.data && response.data.episode)
                 setEpisode(response.data.episode);
         };
@@ -45,9 +38,6 @@ const EpisodeScreen = (props: EpisodeScreenProps) => {
                         />
                     </TouchableOpacity>
                     <VideoPlayer
-                        // width="800px"
-                        // height="450px"
-                        // controls
                         thumbnail={`https://d34lypc6o619vf.cloudfront.net/${episode.season_number}.${episode.episode_number}.jpg`}
                         source={episode.src}
                     />
