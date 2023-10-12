@@ -1,11 +1,8 @@
 import React from 'react';
-import { View, Text, Picker, Icon } from 'react-native-ui-lib';
-import _ from 'lodash';
+import { View, Text, Picker, Icon, Colors } from 'react-native-ui-lib';
 import { EpisodeCard } from './EpisodeCard';
 import { Episode, NavigationProps } from '../commonTypes';
 import { getEpisodesFromSeason } from '../util';
-import { ScrollView } from 'react-native';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 const dropdown = require('../assets/icons/chevron-down.png');
 
@@ -44,7 +41,7 @@ const EpisodesGroup = (props: { defaultSeason: number } & NavigationProps) => {
           onChange={handleChange}
           selectionLimit={3}
           useSafeArea
-          trailingAccessory={<Icon style={{ height: 16, width: 16 }} source={dropdown} />}
+          trailingAccessory={<Icon style={{ height: 16, width: 16 }} source={dropdown} tintColor={Colors.textColor} />}
           fieldType={Picker.fieldTypes.filter}
           useWheelPicker
         >
@@ -52,18 +49,16 @@ const EpisodesGroup = (props: { defaultSeason: number } & NavigationProps) => {
             <Picker.Item key={season} value={season + 1} label={`Season ${season + 1}`} />
           )}
         </Picker>
-        {/* <ScrollView> */}
-          <View >
-            {episodes.map((episode, index) =>
-              <EpisodeCard episode={episode} key={index} navigation={props.navigation} />
-            )}
-            <View style={{ height: 100 }} />
-          </View>
-        {/* </ScrollView> */}
+        <View >
+          {episodes.map((episode, index) =>
+            <EpisodeCard episode={episode} key={index} navigation={props.navigation} />
+          )}
+          <View style={{ height: 60 }} />
+        </View>
       </View>
     );
   }
-  return <Text /*blue20*/>Loading...</Text>;
+  return <Text>Loading...</Text>;
 };
 
 export { EpisodesGroup };

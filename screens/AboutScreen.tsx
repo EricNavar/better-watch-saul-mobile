@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, Image } from 'react-native-ui-lib';
 import { Layout } from '../components/Layout';
-import { Button, TouchableOpacity } from 'react-native';
+import { Button, TouchableOpacity } from 'react-native-ui-lib';
 import { NavigationProps } from '../commonTypes';
 import { Linking} from 'react-native'
 
@@ -17,7 +17,7 @@ const AboutScreen = (props: NavigationProps) => {
             <Text text60>Is this illegal?</Text>
             <Text>Yes</Text>
             <Text text60>Where is the source code for this amazing project?</Text>
-            <Button title='Right here!' onPress={()=>{Linking.openURL('https://github.com/EricNavar/better-watch-saul-mobile')}}/>
+            <Button label='Right here!' onPress={()=>{Linking.openURL('https://github.com/EricNavar/better-watch-saul-mobile')}}/>
         </Layout>
     );
 }

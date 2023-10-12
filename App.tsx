@@ -45,7 +45,7 @@ export default function App() {
                     screenOptions={{
                         headerShown: false,
                         contentStyle:{
-                            backgroundColor:'#FFFFFF'
+                            backgroundColor:Colors.screenBG
                         }
                     }}
                 >
