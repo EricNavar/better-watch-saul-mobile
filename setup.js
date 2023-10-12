@@ -1,1 +1,1 @@
-require('react-native-ui-lib/config').setConfig({ appScheme: 'light' });
+require('react-native-ui-lib/config').setConfig({ appScheme: 'dark' });

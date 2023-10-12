@@ -1,6 +1,7 @@
 import 'react-native-gesture-handler';
 import React from 'react';
-import './setup';
+import Config from 'react-native-ui-lib/config';
+// require('react-native-ui-lib/config').setConfig({ appScheme: 'dark' });
 import {
     EpisodeScreen,
     HomeScreen,
@@ -14,6 +15,8 @@ import { Colors } from 'react-native-ui-lib';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+    Config.setConfig({ appScheme: 'dark' });
+
     Colors.loadSchemes({
         light: {
             screenBG: Colors.white,
@@ -25,8 +28,8 @@ export default function App() {
             $backgroundSuccessLight: Colors.green20,
         },
         dark: {
-            screenBG: Colors.white,
-            textColor: Colors.black,
+            screenBG: Colors.black,
+            textColor: Colors.white,
             moonOrSun: Colors.grey80,
             mountainForeground: Colors.violet10,
             mountainBackground: Colors.violet20,

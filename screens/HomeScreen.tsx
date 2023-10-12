@@ -1,11 +1,13 @@
 import React from 'react';
 import { EpisodesGroup } from '../components/EpisodesGroup';
-import { Button, Image } from 'react-native-ui-lib';
+import { Button, Colors, Image } from 'react-native-ui-lib';
 import { Layout } from '../components/Layout';
 import { NavigationProps, Screens } from '../commonTypes';
 import { ScrollView } from 'react-native';
 
 const HomeScreen = (props: NavigationProps) => {
+    console.log(Colors.screenBG);
+
     return (
         <Layout style={{marginHorizontal: 16}}>
             <Image
